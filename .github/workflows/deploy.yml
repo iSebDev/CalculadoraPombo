@@ -1,0 +1,24 @@
+name: Calculadora Pombo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Main
+        uses: actions/checkout@v3
+
+      - name: Load reCAPTCHA
+        run: |
+          find . -type f -name "*.html" -exec sed -i "s/{{site_key}}/${{ secrets.SITEKEY }}/g" {} \;
+
+      - name: Github
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
