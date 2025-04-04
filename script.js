@@ -3,6 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const comboBoxes = document.querySelectorAll(".materials");
 
+    const coefs = {
+        "0-0": 0.1,
+    }
+
+    const coefRoz = (m1, m2) => {
+
+        const mat = `${m1}-${m2}`;
+
+        return coefs[mat];
+
+    }
+
     comboBoxes.forEach((c) => {
         let i = 0;
         materiales.forEach((m) => {
@@ -17,4 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
             c.appendChild(opt);
         });
     });
+
+    
 });
