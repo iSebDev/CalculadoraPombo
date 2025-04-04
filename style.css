@@ -34,6 +34,7 @@ body {
     flex-direction: column;
     border-radius: 0.5rem;
     box-shadow: var(--border) 3px 3px 6px;
+    gap: 2rem;
 }
 
 .title {
@@ -71,6 +72,7 @@ input {
     box-shadow: #333 3px 3px 6px;
     border-radius: 0.5rem;
     height: 10vh;
+    text-align: center;
 }
 
 #masa {
@@ -105,8 +107,11 @@ select {
     gap: 0.5rem;
 }
 
-#submit {
+#calcular {
     width: 30%;
     height: 40px;
+    border: none;
+    outline: none;
     border-radius: 0.5rem;
+    box-shadow: #333 3px 3px 6px;
 }
