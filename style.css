@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #333; 
+    --bg2: #1f1e1e;
+}
+
+body {
+    background: var(--bg);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.panel {
+    width: 30vw;
+    height: 90vh;
+    color: white;
+    font-size: 5vh;
+    background-color: var(--bg2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.panel input {
+    outline: none;
+    width: 100%;
+}

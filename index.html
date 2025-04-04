@@ -6,13 +6,25 @@
     <title>Calculadora Pombo</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
-    <form method="POST">
-        <div class="g-recaptcha" data-sitekey="6LdDoAkrAAAAAHhYbO_WRo_KXxb38G73KglnjONr"></div>
-        <br/>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <div class="panel">
+            <form method="POST">
+                <label>Hola</label>
+                <input type="text">
+                <label>Ejemplo</label>
+                <input type="text">
+                <label>Pancho</label>
+                <input type="text">
+                <label>Sorete</label>
+                <input type="text">
+                <div class="g-recaptcha" data-sitekey="6LdDoAkrAAAAAHhYbO_WRo_KXxb38G73KglnjONr"></div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
