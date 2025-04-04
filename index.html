@@ -17,32 +17,20 @@
             <form method="POST">
                 <div class="input-div">
                     <label class="panel-label">Masa (gramos)</label>
-                    <input type="number" placeholder="Inserte masa en gramos" min="0" maxlength="" required step="0.1" name="masa">
+                    <input id="masa" type="number" placeholder="Inserte masa (g)" min="0" max="1000000" required step="0.1" name="masa">
                 </div>
                 <div class="input-div">
                     <label class="panel-label">Grado de inclinación</label>
-                    <input type="number" min="0" max="180" required name="angulo">
+                    <input id="grado" type="number" placeholder="Grado (°)" min="0" max="180" required name="angulo">
                 </div>
                 <div class="input-div row-div">
                     <div class="input-div-snd">
-                        <label class="panel-label">Material 1</label>
-                        <select name="m1" class="materials">
-                            <option value="1" selected>Material 1</option>
-                            <option value="2">Material 2</option>
-                            <option value="3">Material 3</option>
-                            <option value="4">Material 4</option>
-                            <option value="5">Material 5</option>
-                        </select>
+                        <label class="panel-label">Material Superficie</label>
+                        <select name="m1" class="materials"></select>
                     </div>
                     <div class="input-div-snd">
-                        <label class="panel-label">Material 2</label>
-                        <select name="m1" class="materials">
-                            <option value="1" selected>Material 1</option>
-                            <option value="2">Material 2</option>
-                            <option value="3">Material 3</option>
-                            <option value="4">Material 4</option>
-                            <option value="5">Material 5</option>
-                        </select>
+                        <label class="panel-label">Material Objeto</label>
+                        <select name="m1" class="materials"></select>
                     </div>
                 </div>
                 <div class="input-div">
