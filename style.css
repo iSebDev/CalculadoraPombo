@@ -68,15 +68,24 @@ input {
     outline: none;
     border: none;
     text-indent: 5px;
-    height: 10vh;
     box-shadow: #333 3px 3px 6px;
     border-radius: 0.5rem;
+    height: 10vh;
+}
+
+#masa {
+    width: 10vw;
+}
+
+#grado {
+    width: 5vw;
 }
 
 select {
     outline: none;
     border: none;
     text-indent: 5px;
+    width: ;
     height: 5vh;
     box-shadow: #333 3px 3px 6px;
     border-radius: 0.5rem;
