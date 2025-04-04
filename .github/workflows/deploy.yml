@@ -16,7 +16,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3 
-
+      - name: Value
+        run: |
+          echo "Valor de SITEKEY: ${{ secrets.SITEKEY }}"
       - name: Load SiteKEY
         run: |
           find . -type f -name "*.html" -exec sed -i "s/{{site_key}}/${{ secrets.SITEKEY }}/g" {} \;
