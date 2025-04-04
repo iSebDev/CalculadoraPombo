@@ -115,3 +115,7 @@ select {
     border-radius: 0.5rem;
     box-shadow: #333 3px 3px 6px;
 }
+
+.recaptcha div {
+    transform: scale(0.95);
+}
