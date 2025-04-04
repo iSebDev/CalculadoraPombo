@@ -3,22 +3,28 @@ name: Calculadora Pombo
 on:
   push:
     branches:
-      - main
+      - main  
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
 
     steps:
-      - name: Main
-        uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3 
 
-      - name: Load reCAPTCHA
+      - name: Reemplazar {{site_key}} con el valor del secreto SITEKEY
         run: |
           find . -type f -name "*.html" -exec sed -i "s/{{site_key}}/${{ secrets.SITEKEY }}/g" {} \;
 
-      - name: Github
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Configurar git para HTTPS
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global credential.helper 'cache --timeout=3600'
+
+      - name: Deploy a GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3 
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          github_token: ${{ secrets.GITHUB_TOKEN }} 
+          publish_dir: .  
