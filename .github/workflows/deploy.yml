@@ -1,3 +1,7 @@
+permissions:
+  contents: write
+  pages: write
+
 name: Calculadora Pombo
 
 on:
@@ -13,11 +17,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3 
 
-      - name: Reemplazar {{site_key}} con el valor del secreto SITEKEY
+      - name: Load SiteKEY
         run: |
           find . -type f -name "*.html" -exec sed -i "s/{{site_key}}/${{ secrets.SITEKEY }}/g" {} \;
 
-      - name: Configurar git para HTTPS
+      - name: Config
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
