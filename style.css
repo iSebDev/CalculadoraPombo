@@ -4,8 +4,9 @@
 }
 
 :root {
-    --bg: #333; 
-    --bg2: #1f1e1e;
+    --bg: #FFF275; 
+    --bg2: #FFE600;
+    --border: #665e13;
 }
 
 body {
@@ -25,16 +26,77 @@ body {
 .panel {
     width: 30vw;
     height: 90vh;
-    color: white;
-    font-size: 5vh;
+    color: black;
     background-color: var(--bg2);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    border-radius: 0.5rem;
+    box-shadow: var(--border) 3px 3px 6px;
 }
 
-.panel input {
-    outline: none;
+.title {
+    text-align: center;
+    font-size: 4vh;
+}
+
+form {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-div {
+    width: calc(100vw - 70vw);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.panel-label {
+    font-size: 3vh;
+}
+
+input {
+    outline: none;
+    border: none;
+    text-indent: 5px;
+    height: 10vh;
+    box-shadow: #333 3px 3px 6px;
+    border-radius: 0.5rem;
+}
+
+select {
+    outline: none;
+    border: none;
+    text-indent: 5px;
+    height: 5vh;
+    box-shadow: #333 3px 3px 6px;
+    border-radius: 0.5rem;
+}
+
+.row-div {
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.input-div-snd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#submit {
+    width: 30%;
+    height: 40px;
+    border-radius: 0.5rem;
 }

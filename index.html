@@ -11,17 +11,46 @@
 <body>
     <div class="container">
         <div class="panel">
+            <h1 class="title">
+                Calculadoreishon de Planeishon Inclinadeishon
+            </h1>
             <form method="POST">
-                <label>Hola</label>
-                <input type="text">
-                <label>Ejemplo</label>
-                <input type="text">
-                <label>Pancho</label>
-                <input type="text">
-                <label>Sorete</label>
-                <input type="text">
-                <div class="g-recaptcha" data-sitekey="6LdDoAkrAAAAAHhYbO_WRo_KXxb38G73KglnjONr"></div>
-                <input type="submit" value="Submit">
+                <div class="input-div">
+                    <label class="panel-label">Masa (gramos)</label>
+                    <input type="number" placeholder="Inserte masa en gramos" min="0" maxlength="" required step="0.1" name="masa">
+                </div>
+                <div class="input-div">
+                    <label class="panel-label">Grado de inclinación</label>
+                    <input type="number" min="0" max="180" required name="angulo">
+                </div>
+                <div class="input-div row-div">
+                    <div class="input-div-snd">
+                        <label class="panel-label">Material 1</label>
+                        <select name="m1" class="materials">
+                            <option value="1" selected>Material 1</option>
+                            <option value="2">Material 2</option>
+                            <option value="3">Material 3</option>
+                            <option value="4">Material 4</option>
+                            <option value="5">Material 5</option>
+                        </select>
+                    </div>
+                    <div class="input-div-snd">
+                        <label class="panel-label">Material 2</label>
+                        <select name="m1" class="materials">
+                            <option value="1" selected>Material 1</option>
+                            <option value="2">Material 2</option>
+                            <option value="3">Material 3</option>
+                            <option value="4">Material 4</option>
+                            <option value="5">Material 5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-div">
+                    <div class="g-recaptcha" data-sitekey="6LdDoAkrAAAAAHhYbO_WRo_KXxb38G73KglnjONr"></div>
+                </div>
+                <div class="input-div">
+                    <input id="submit" type="submit" value="Submit">
+                </div>
             </form>
         </div>
     </div>
