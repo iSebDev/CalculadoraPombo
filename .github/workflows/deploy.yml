@@ -20,7 +20,10 @@ jobs:
       - name: Load SiteKEY
         run: |
           find . -type f -name "*.html" -exec sed -i "s/{{site_key}}/${{ secrets.SITEKEY }}/g" {} \;
-
+      - name: Cat HTML
+        run: |
+          echo "Archivos HTML después del reemplazo:"
+          find . -type f -name "*.html" -exec cat {} \;
       - name: Config
         run: |
           git config --global user.name "github-actions"
