@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const comboBoxes = document.querySelectorAll(".materials");
 
+    const form = document.querySelector("form");
+
     const coefs = {
         "0-0": 0.1,
     }
@@ -30,17 +32,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    document.querySelector("form").addEventListener("submit", (e) => {
+    form.addEventListener("submit", (e) => {
         let captchaResponse = grecaptcha.getResponse();
 
-        if (!captchaResponse) {
+        if (captchaResponse) {
             e.preventDefault();
 
             alert("Por favor completa el reCAPTCHA.");
             return;
         }
 
-        alert("Hola");
+        e.preventDefault();
+
+        /*
+         * Realizar Calculos
+         */
+        var formData = new FormData(form);
+
+        const masa = formData.get("masa") != null ? formData.get("masa") : 0;
+        const ang = formData.get("angulo") != null ? formData.get("angulo") : 0;
+
+        const m1 = formData.get("m1") != null ? formData.get("m1") : 0;
+        const m2 = formData.get("m2") != null ? formData.get("m2") : 0;
     });
     
 });
