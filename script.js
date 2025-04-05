@@ -41,5 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     });
+
+    document.querySelector("").addEventListener("submit", (e) => {
+        alert("Hola");
+    });
     
 });
