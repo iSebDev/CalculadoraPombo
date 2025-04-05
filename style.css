@@ -62,7 +62,8 @@ form {
 }
 
 .recaptcha-wrapper {
-    transform-origin: top left;
+    display: flex;
+    justify-content: center;
 }
 
 input,
@@ -127,6 +128,7 @@ select {
 
     .recaptcha-wrapper {
         transform: scale(0.85);
+        transform-origin: top center;
     }
 
     .panel-label {
