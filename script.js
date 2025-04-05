@@ -35,12 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (e) => {
         let captchaResponse = grecaptcha.getResponse();
 
-        if (captchaResponse) {
+        /*if (!captchaResponse) {
             e.preventDefault();
 
             alert("Por favor completa el reCAPTCHA.");
             return;
-        }
+        }*/
 
         e.preventDefault();
 
@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const m1 = formData.get("m1") != null ? formData.get("m1") : 0;
         const m2 = formData.get("m2") != null ? formData.get("m2") : 0;
+
     });
     
 });

@@ -61,6 +61,10 @@ form {
     font-weight: bold;
 }
 
+.recaptcha-wrapper {
+    transform-origin: top left;
+}
+
 input,
 select {
     width: 100%;
@@ -119,6 +123,10 @@ select {
 @media (max-width: 600px) {
     .title {
         font-size: 1.5rem;
+    }
+
+    .recaptcha-wrapper {
+        transform: scale(0.85);
     }
 
     .panel-label {
