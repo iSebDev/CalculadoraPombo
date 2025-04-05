@@ -62,8 +62,10 @@ form {
 }
 
 .recaptcha-wrapper {
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 input,
@@ -126,7 +128,7 @@ select {
         font-size: 1.5rem;
     }
 
-    .recaptcha-wrapper {
+    .g-recaptcha {
         transform: scale(0.85);
         transform-origin: top center;
     }
