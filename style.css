@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
@@ -15,107 +16,126 @@ body {
 }
 
 .container {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    padding: 2rem 1rem;
 }
 
 .panel {
-    width: 30vw;
-    height: 90vh;
-    color: black;
+    width: 100%;
+    max-width: 500px;
     background-color: var(--bg2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    color: black;
     border-radius: 0.5rem;
     box-shadow: var(--border) 3px 3px 6px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
 }
 
 .title {
     text-align: center;
-    font-size: 4vh;
+    font-size: 1.8rem;
 }
 
 form {
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .input-div {
-    width: calc(100vw - 70vw);
-    height: 10vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     gap: 0.5rem;
+    align-items: flex-start;
 }
 
 .panel-label {
-    font-size: 3vh;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
-input {
-    outline: none;
-    border: none;
-    text-indent: 5px;
-    box-shadow: #333 3px 3px 6px;
-    border-radius: 0.5rem;
-    height: 10vh;
-    text-align: center;
-}
-
-#masa {
-    width: 10vw;
-}
-
-#grado {
-    width: 5vw;
-}
-
+input,
 select {
-    outline: none;
+    width: 100%;
+    height: 3rem;
+    padding: 0 0.75rem;
     border: none;
-    text-indent: 5px;
-    width: 10vw;
-    height: 5vh;
-    box-shadow: #333 3px 3px 6px;
     border-radius: 0.5rem;
+    box-shadow: #333 2px 2px 5px;
+    font-size: 1rem;
+    outline: none;
     text-align: center;
 }
 
 .row-div {
+    display: flex;
     flex-direction: row;
-    gap: 3rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .input-div-snd {
+    flex: 1;
+    min-width: 45%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-#calcular {
-    width: 30%;
-    height: 40px;
-    border: none;
-    outline: none;
-    border-radius: 0.5rem;
-    box-shadow: #333 3px 3px 6px;
+.input-div-snd label {
+    height: 1.5rem;
 }
 
-.recaptcha div {
-    transform: scale(0.95);
+.recaptcha {
+    align-items: center;
+}
+
+#calcular {
+    width: 100%;
+    max-width: 200px;
+    height: 3rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: #333 2px 2px 5px;
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    align-self: center;
+    transition: background 0.3s ease;
+}
+
+#calcular:hover {
+    background-color: #333;
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .panel-label {
+        font-size: 0.95rem;
+    }
+
+    input,
+    select {
+        height: 2.5rem;
+        font-size: 0.95rem;
+    }
+
+    .row-div {
+        flex-direction: row;
+    }
+
+    #calcular {
+        width: 100%;
+    }
 }
