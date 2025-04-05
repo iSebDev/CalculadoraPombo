@@ -30,5 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    document.querySelector("#calcular").addEventListener("click", (e) => {
+        e.preventDefault();
+
+        let captchaResponse = grecaptcha.getResponse();
+
+        if (!captchaResponse) {
+            alert("Por favor completa el reCAPTCHA.");
+            return;
+        }
+
+    });
     
 });
