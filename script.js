@@ -30,19 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    document.querySelector("#calcular").addEventListener("click", (e) => {
-        e.preventDefault();
-
+    document.querySelector("form").addEventListener("submit", (e) => {
         let captchaResponse = grecaptcha.getResponse();
 
         if (!captchaResponse) {
+            e.preventDefault();
+
             alert("Por favor completa el reCAPTCHA.");
             return;
         }
 
-    });
-
-    document.querySelector("").addEventListener("submit", (e) => {
         alert("Hola");
     });
     
