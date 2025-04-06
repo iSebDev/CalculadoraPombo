@@ -127,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (old != null && old.values().toString() != formData.values().toString()) {
             use++;
         }
-
         old = formData;
 
         masaValue.innerText = `${resultado.kg} kg`;
