@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         let captchaResponse = grecaptcha.getResponse();
         
-        if (captchaResponse) {
+        if (!captchaResponse) {
             e.preventDefault();
 
             alert("Por favor completa el reCAPTCHA.");
