@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         var resultado = evaluar(masa, ang, coef);
 
-        if (old != null && old.values().toString() == formData.values().toString()) {
+        if (old != null && old.values().toString() != formData.values().toString()) {
             use++;
         }
 
