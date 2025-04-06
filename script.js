@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const eqValue = document.getElementById("value-eq");
 
+    let use = 0;
+    var old = null;
+
     const coefs = {
         "0-0": 0.1, // Hielo - Hielo
         "0-1": 0.05, // Hielo - Vidrio
@@ -90,6 +93,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     form.addEventListener("submit", (e) => {
+
+        if (use === 2) {
+            use = 0;
+            grecaptcha.reset();
+        }
         
         let captchaResponse = grecaptcha.getResponse();
         
@@ -112,9 +120,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const m1 = formData.get("m1") || 0;
         const m2 = formData.get("m2") || 0;
 
-        const coef = coefs[`${m1}-${m2}`];
+        const coef = coefRoz(m1, m2);
 
         var resultado = evaluar(masa, ang, coef);
+
+        if (old != null && old.values().toString() == formData.values().toString()) {
+            use++;
+        }
+
+        old = formData;
 
         masaValue.innerText = `${resultado.kg} kg`;
         gradoValue.innerText = `${ang}°`;
