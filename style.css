@@ -10,6 +10,10 @@
     --border: #665e13;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: var(--bg);
     font-family: Arial, Helvetica, sans-serif;
@@ -68,6 +72,68 @@ form {
     align-items: center;
 }
 
+.results-div {
+    display: none;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    border-radius: 0.5rem;
+    box-shadow: #333 2px 2px 5px;
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#results-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.r-div {
+    margin-bottom: 1rem;
+}
+
+.r-div h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.r-div div {
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: normal;
+}
+
+#results.show {
+    display: block;
+}
+
+.value {
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    background-color: #fffbcc;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
 input,
 select {
     width: 100%;
@@ -76,7 +142,7 @@ select {
     border: none;
     border-radius: 0.5rem;
     box-shadow: #333 2px 2px 5px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     outline: none;
     text-align: center;
 }
@@ -131,6 +197,10 @@ select {
     .g-recaptcha {
         transform: scale(0.85);
         transform-origin: top center;
+    }
+
+    .value {
+        font-size: 1.1rem;
     }
 
     .panel-label {
