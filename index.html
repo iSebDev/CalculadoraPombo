@@ -21,17 +21,17 @@
                         <input id="masa" type="number" placeholder="Masa (g)" min="0" maxlength="7" max="1000000" required step="0.1" name="masa">
                     </div>
                     <div class="input-div-snd">
-                        <label class="panel-label">° de Inclinación</label>
+                        <label class="panel-label">Inclinación (°)</label>
                         <input id="grado" type="number" placeholder="Grado (°)" min="0" max="180" required name="angulo">
                     </div>
                 </div>
                 <div class="input-div row-div">
                     <div class="input-div-snd">
-                        <label class="panel-label">Material Sup.</label>
+                        <label class="panel-label">Mat. Objeto</label>
                         <select name="m1" class="materials"></select>
                     </div>
                     <div class="input-div-snd">
-                        <label class="panel-label">Material Obj.</label>
+                        <label class="panel-label">Mat. Superficie</label>
                         <select name="m2" class="materials"></select>
                     </div>
                 </div>
@@ -57,7 +57,11 @@
                     </div>
                     <div class="r-div" id="r-material">
                         <h3>Coef. F:</h3>
-                        <h2 class="value" id="value-material"></h2>
+                        <h2 class="value" id="value-mat"></h2>
+                    </div>
+                    <div class="r-div" id="r-conc">
+                        <h3>Conclusión:</h3>
+                        <h2 class="value" id="value-conc"></h2>
                     </div>
                     <div class="r-div" id="r-equilibrio">
                         <h3>En equilibrio:</h3>
@@ -68,6 +72,6 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
