@@ -8,6 +8,8 @@
     --bg: #FFF275; 
     --bg2: #FFE600;
     --border: #665e13;
+    --vl: #ffffff;
+    --rd: #ffe839;
 }
 
 html {
@@ -75,19 +77,19 @@ form {
 .results-div {
     display: none;
     padding: 1rem;
-    background-color: #f0f0f0;
+    background-color: var(--rd);
     border-radius: 0.5rem;
     box-shadow: #333 2px 2px 5px;
     margin-top: 2rem;
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-35px);
     animation: slideIn 0.5s ease-out forwards;
 }
 
 @keyframes slideIn {
     0% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-35px);
     }
     100% {
         opacity: 1;
@@ -121,6 +123,7 @@ form {
 
 #results.show {
     display: block;
+    transition: all 0.5s ease;
 }
 
 .value {
@@ -128,7 +131,7 @@ form {
     color: #333;
     font-weight: bold;
     text-align: center;
-    background-color: #fffbcc;
+    background-color: var(--vl);
     padding: 0.5rem;
     border-radius: 0.5rem;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
