@@ -105,15 +105,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const formData = new FormData(form);
-        const { masa = 0, angulo: ang = 0, m1 = 0, m2 = 0 } = Object.fromEntries(formData);
+        const { masa = 0, angulo: ang = 0, m1 = 0, m2 = 0, coef = 0 } = Object.fromEntries(formData);
 
-        const coef = coefRoz(m1, m2);
+        const coeficiente = otroCheck.checked ? coef : coefRoz(m1, m2);
         const resultado = evaluar(masa, ang, coef);
         const sym = resultado.frm >= resultado.fr ? "≥" : "≤";
 
         masaValue.textContent = `${resultado.kg} kg`;
         gradoValue.textContent = `${ang}°`;
-        coefValue.textContent = coef;
+        coefValue.textContent = coeficiente;
         concValue.textContent = `${resultado.frm}N ${sym} ${resultado.fr}N`;
         eqValue.textContent = resultado.eq ? "Sí" : "No";
 
