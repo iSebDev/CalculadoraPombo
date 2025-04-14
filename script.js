@@ -2,14 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const materiales = ["Hielo", "Vidrio", "Madera", "Acero", "Cuero"];
 
     const comboBoxes = document.querySelectorAll(".materials");
+    const checkDiv = document.querySelector(".check-div")
     const results = document.querySelector("#results");
     const form = document.querySelector("form");
 
-    const masaValue = document.getElementById("value-masa");
-    const gradoValue = document.getElementById("value-grado");
-    const coefValue = document.getElementById("value-mat");
-    const eqValue = document.getElementById("value-eq");
-    const concValue = document.getElementById("value-conc");
+    const masaValue = document.querySelector("#value-masa");
+    const gradoValue = document.querySelector("#value-grado");
+    const coefValue = document.querySelector("#value-mat");
+    const eqValue = document.querySelector("#value-eq");
+    const concValue = document.querySelector("#value-conc");
+
+    const otroCheck = document.querySelector("#otro");
+    const otroCoef = document.querySelector("#other-coef");
 
     // Objeto - Superficie
     const coefs = {
@@ -40,43 +44,33 @@ document.addEventListener("DOMContentLoaded", () => {
         "4-4": 0.6  // Cuero - Cuero
     };
 
-    /*const coefs = {
-        "0-0": 0.1, // Hielo - Hielo
-        "0-1": 0.05, // Hielo - Vidrio
-        "0-2": 0.55, // Hielo - Madera
-        "0-3": 0.03, // Hielo - Acero
-        "0-4": 0.02, // Hielo - Cuero
-        "1-0": 0.02, // Vidrio - Hielo
-        "1-1": 0.9, // Vidrio - Vidrio
-        "1-2": 0.25, // Vidrio - Madera
-        "1-3": 0.5, // Vidrio - Acero
-        "1-4": 0.3, // Vidrio - Cuero
-        "2-0": 0.2, // Madera - Hielo
-        "2-1": 0.3, // Madera - Vidrio
-        "2-2": 0.7, // Madera - Madera
-        "2-3": 0.4, // Madera - Acero
-        "2-4": 0.7, // Madera - Cuero
-        "3-0": 0.1, // Acero - Hielo
-        "3-1": 0.4, // Acero - Vidrio
-        "3-2": 0.5, // Acero - Madera
-        "3-3": 0.74, // Acero - Acero 
-        "3-4": 0.4, // Acero - Cuero
-        "4-0": 0.03, // Cuero - Hielo
-        "4-1": 0.1, // Cuero - Vidrio
-        "4-2": 0.5, // Cuero - Madera
-        "4-3": 0.4, // Cuero - Acero
-        "4-4": 0.6 // Cuero - Cuero
-    };*/
-
     const coefRoz = (m1, m2) => coefs[`${m1}-${m2}`];
 
-    const fillCombo = (combo, opciones) => {
+    const configCombo = (combo, opciones) => {
         combo.innerHTML = opciones.map((nombre, i) => 
             `<option value="${i}" ${i === 0 ? "selected" : ""}>${nombre}</option>`
         ).join("");
     };
 
-    comboBoxes.forEach(combo => fillCombo(combo, materiales));
+    comboBoxes.forEach(combo => configCombo(combo, materiales));
+
+    otroCheck.addEventListener("change", () => {
+        if (otroCheck.checked) {
+            comboBoxes.forEach(combo => combo.setAttribute("disabled", ""));
+            otroCoef.classList.add("show");
+            otroCoef.querySelector("input").setAttribute("required", "");
+            checkDiv.style = "transform: translateX(-20px); opacity: 0;";
+        } else {
+            comboBoxes.forEach(combo => combo.removeAttribute("disabled"));
+            otroCoef.classList.remove("show");
+            otroCoef.querySelector("input").removeAttribute("required");
+            checkDiv.style = "transform: translateX(20px); opacity: 0;";
+        } 
+
+        setTimeout(() => {
+            checkDiv.style = "opacity: 1;";
+        }, 500)
+    });
 
     const evaluar = (masaGr, anguloDeg, coef) => {
         const g = 9.8;

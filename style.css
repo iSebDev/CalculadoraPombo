@@ -21,6 +21,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.check-container input[type="checkbox"] {
+    display: none;
+}
+
 .container {
     width: 100%;
     min-height: 100vh;
@@ -126,6 +130,12 @@ form {
     transition: all 0.5s ease;
 }
 
+#other-coef.show {
+    height: 5rem;
+    display: flex;
+    transition: all 0.5s ease;
+}
+
 .value {
     font-size: 1.3rem;
     color: #333;
@@ -150,6 +160,83 @@ select {
     text-align: center;
 }
 
+select {
+    transition: all 1s ease;
+}
+
+.check-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+#other-coef {
+    display: none;
+    animation: slideRow 0.5s ease-out forwards;
+}
+
+@keyframes slideRow {
+    0% {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideB {
+    0% {
+        transform: translateX(35px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.check {
+    opacity: 0;
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border: 0.5px solid #333;
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.5s ease;
+    box-shadow: #333 2px 2px 5px;
+    cursor: pointer;
+}
+
+.checkmark::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid black;
+    border-width: 0 2px 0.5px 0;
+    transform: rotate(45deg) scale(0);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.check-container input:checked + .checkmark::after {
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
+}
+
 .row-div {
     display: flex;
     flex-direction: row;
@@ -163,6 +250,15 @@ select {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+.check-div {
+    min-width: 45%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.5s ease, opacity 0.2s ease;
 }
 
 .input-div-snd label {
