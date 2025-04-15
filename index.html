@@ -22,17 +22,17 @@
                     </div>
                     <div class="input-div-snd">
                         <label class="panel-label">Inclinación (°)</label>
-                        <input id="grado" type="number" placeholder="Grado (°)" min="0" max="180" required name="angulo">
+                        <input id="grado" type="number" placeholder="Grado (°)" min="0" max="90" required name="angulo">
                     </div>
                 </div>
                 <div class="input-div row-div">
                     <div class="input-div-snd">
                         <label class="panel-label">Mat. Objeto</label>
-                        <select name="m1" class="materials"></select>
+                        <select name="m1" class="materials show"></select>
                     </div>
                     <div class="input-div-snd">
                         <label class="panel-label">Mat. Superficie</label>
-                        <select name="m2" class="materials"></select>
+                        <select name="m2" class="materials show"></select>
                     </div>
                 </div>
                 <div class="input-div row-div">
@@ -44,8 +44,8 @@
                         </label>
                     </div>
                     <div id="other-coef" class="input-div-snd disabled">
-                        <label class="panel-label">Coef. Fricción (μS)</label>
-                        <input id="coef" type="number" placeholder="Coef. Roz (μS)" step="0.01" min="0" name="coef">
+                        <label class="panel-label">Coef. Fricción</label>
+                        <input id="coef" type="number" placeholder="Coef. Roz (μS)" step="0.01" min="0" max="1000000" name="coef">
                     </div>
                 </div>
                 <div class="input-div recaptcha">
@@ -81,10 +81,13 @@
                         <h2 class="value" id="value-eq"></h2>
                     </div>
                 </div>
-                
+                <div class="r-div" id="r-graph">
+                    <canvas id="graph" width="300" height="300"></canvas>
+                    <img id="graphImg" width="300" height="300">
+                </div>
             </div>
         </div>
     </div>
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

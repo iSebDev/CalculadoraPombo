@@ -1,3 +1,5 @@
+import { drawGraph } from './graph.js';
+
 document.addEventListener("DOMContentLoaded", () => {
     const materiales = ["Hielo", "Vidrio", "Madera", "Acero", "Cuero"];
 
@@ -14,6 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const otroCheck = document.querySelector("#otro");
     const otroCoef = document.querySelector("#other-coef");
+    
+    const graph = document.querySelector("#graph");
+    const graphImg = document.querySelector("#graphImg");
 
     // Objeto - Superficie
     const coefs = {
@@ -101,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const captchaResponse = grecaptcha.getResponse();
         if (!captchaResponse) {
             alert("Por favor completa el reCAPTCHA.");
+            graphImg.setAttribute("src", "img/splintermaster88.png");
             return;
         }
 
@@ -113,13 +119,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         masaValue.textContent = `${resultado.kg} kg`;
         gradoValue.textContent = `${ang}°`;
-        coefValue.textContent = coeficiente;
+        coefValue.textContent = `${coeficiente} μS`;
         concValue.textContent = `${resultado.frm}N ${sym} ${resultado.fr}N`;
         eqValue.textContent = resultado.eq ? "Sí" : "No";
 
         results.classList.add("show");
         
         location.hash = '';
+
+        drawGraph(graph, ang, coeficiente);
+
+        graphImg.setAttribute("src", graph.toDataURL());
 
         const lastResult = results.querySelector(".row-div").lastElementChild.id;
 
