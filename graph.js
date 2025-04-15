@@ -95,7 +95,7 @@ function drawAll(ctx, cx, cy, coef, angulo, boxSize, length) {
 
     // Texto "P"
     ctx.fillStyle = "red";
-    ctx.font = "14px sans-serif";
+    ctx.font = "16px Arial";
     ctx.fillText("P", endX + 5, endY - 5);
     ctx.restore();
 }

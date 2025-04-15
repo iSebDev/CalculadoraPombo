@@ -82,6 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const masaKg = masaGr / 1000;
         const peso = masaKg * g;
 
+        console.log(coef);
+
         const pesoX = peso * Math.sin(anguloDeg * Math.PI / 180);
         const pesoY = peso * Math.cos(anguloDeg * Math.PI / 180);
         const fuerzaRozMax = coef * pesoY;
@@ -114,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const { masa = 0, angulo: ang = 0, m1 = 0, m2 = 0, coef = 0 } = Object.fromEntries(formData);
 
         const coeficiente = otroCheck.checked ? coef : coefRoz(m1, m2);
-        const resultado = evaluar(masa, ang, coef);
+        const resultado = evaluar(masa, ang, coeficiente);
         const sym = resultado.frm >= resultado.fr ? "≥" : "≤";
 
         masaValue.textContent = `${resultado.kg} kg`;
