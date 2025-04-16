@@ -54,7 +54,7 @@ function drawAll(ctx, cx, cy, coef, angulo, boxSize, length) {
 
     // Normal
     drawArrow(ctx, 0, -boxSize / 2, 0, -length, "blue");
-    ctx.fillText("Normal", 10, -length + 10);
+    ctx.fillText("N", 10, -length + 10);
 
     // Pesos y Fuerza Fricción
 
