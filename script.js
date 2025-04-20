@@ -102,6 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "Enter") document.querySelector("#calcular").click();
     });
 
+    grecaptcha.render("recaptcha", {
+        sitekey: "{{site_key}}"
+    });
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         grecaptcha.ready(() => {
