@@ -104,37 +104,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+        grecaptcha.ready(() => {
+            grecaptcha.execute("{{site_key}}", { action: "submit" }).then((grecaptchaToken) => {
+                fetch("https://tu-backend.vercel.app/api/verify-recaptcha", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ token: grecaptchaToken }),
+                })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    const captchaResponse = grecaptcha.getResponse();
+                    if (!captchaResponse) {
+                        alert("Por favor completa el reCAPTCHA.");
+                        graphImg.setAttribute("src", "img/splintermaster88.png");
+                        return;
+                    }
 
-        const captchaResponse = grecaptcha.getResponse();
-        if (!captchaResponse) {
-            alert("Por favor completa el reCAPTCHA.");
-            graphImg.setAttribute("src", "img/splintermaster88.png");
-            return;
-        }
+                    const formData = new FormData(form);
+                    const { masa = 0, angulo: ang = 0, m1 = 0, m2 = 0, coef = 0 } = Object.fromEntries(formData);
 
-        const formData = new FormData(form);
-        const { masa = 0, angulo: ang = 0, m1 = 0, m2 = 0, coef = 0 } = Object.fromEntries(formData);
+                    const coeficiente = otroCheck.checked ? coef : coefRoz(m1, m2);
+                    const resultado = evaluar(masa, ang, coeficiente);
+                    const sym = resultado.frm >= resultado.fr ? "≥" : "≤";
 
-        const coeficiente = otroCheck.checked ? coef : coefRoz(m1, m2);
-        const resultado = evaluar(masa, ang, coeficiente);
-        const sym = resultado.frm >= resultado.fr ? "≥" : "≤";
+                    masaValue.textContent = `${resultado.kg} kg`;
+                    gradoValue.textContent = `${ang}°`;
+                    coefValue.textContent = `${coeficiente} μS`;
+                    concValue.textContent = `${resultado.frm}N ${sym} ${resultado.fr}N`;
+                    eqValue.textContent = resultado.eq ? "Sí" : "No";
 
-        masaValue.textContent = `${resultado.kg} kg`;
-        gradoValue.textContent = `${ang}°`;
-        coefValue.textContent = `${coeficiente} μS`;
-        concValue.textContent = `${resultado.frm}N ${sym} ${resultado.fr}N`;
-        eqValue.textContent = resultado.eq ? "Sí" : "No";
+                    results.classList.add("show");
+                    
+                    location.hash = '';
 
-        results.classList.add("show");
-        
-        location.hash = '';
+                    drawGraph(graph, ang, coeficiente);
 
-        drawGraph(graph, ang, coeficiente);
+                    graphImg.setAttribute("src", graph.toDataURL());
 
-        graphImg.setAttribute("src", graph.toDataURL());
+                    const lastResult = results.querySelector(".row-div").lastElementChild.id;
 
-        const lastResult = results.querySelector(".row-div").lastElementChild.id;
-
-        setTimeout(() => location.hash = lastResult, 600);
-    });
+                    setTimeout(() => location.hash = lastResult, 600);
+                } else {
+                    document.removeChild(document.querySelector(".container"));
+                    alert("Tengo 3 propiedades");
+                }
+            });
+        });
+    })});
 });

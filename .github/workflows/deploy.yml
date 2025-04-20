@@ -20,7 +20,7 @@ jobs:
       - name: Load SiteKEY
         run: |
           SITEKEY_ESCAPED=$(printf '%s' "${{ secrets.SITEKEY }}" | sed 's/[&/\]/\\&/g')
-          find . -type f -name "*.html" -exec sed -i "s#{{site_key}}#${SITEKEY_ESCAPED}#g" {} \;
+          find . -type f \( -name "*.html" -o -name "*.js" \) -exec sed -i "s#{{site_key}}#${SITEKEY_ESCAPED}#g" {} \;
       - name: Cat HTML
         run: |
           find . -type f -name "*.html" -exec cat {} \;
