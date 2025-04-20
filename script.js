@@ -101,73 +101,73 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keypress", (e) => {
         if (e.key === "Enter") document.querySelector("#calcular").click();
     });
-
-    grecaptcha.render("recaptcha", {
-        sitekey: "6LdDoAkrAAAAAHhYbO_WRo_KXxb38G73KglnjONr"
+    
+    grecaptcha.ready(() => {
+        grecaptcha.render("recaptcha", {
+            sitekey: "6LdDoAkrAAAAAHhYbO_WRo_KXxb38G73KglnjONr"
+        });
     });
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
     
-        grecaptcha.ready(() => {
-            grecaptcha.execute("6LdDoAkrAAAAAHhYbO_WRo_KXxb38G73KglnjONr", { action: "submit" })
-                .then((grecaptchaToken) => {
-                    fetch("https://calculadorapombo.vercel.app/api/verify-recaptcha", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ token: grecaptchaToken }),
-                    })
-                        .then((res) => res.json())
-                        .then((data) => {
-                            if (data.success) {
-                                const captchaResponse = grecaptcha.getResponse();
-                                if (!captchaResponse) {
-                                    alert("Por favor completa el reCAPTCHA.");
-                                    graphImg.setAttribute("src", "img/splintermaster88.png");
-                                    return;
-                                }
-    
-                                const formData = new FormData(form);
-                                const { masa = 0, angulo: ang = 0, m1 = 0, m2 = 0, coef = 0 } = Object.fromEntries(formData);
-    
-                                const coeficiente = otroCheck.checked ? coef : coefRoz(m1, m2);
-                                const resultado = evaluar(masa, ang, coeficiente);
-                                const sym = resultado.frm >= resultado.fr ? "≥" : "≤";
-    
-                                masaValue.textContent = `${resultado.kg} kg`;
-                                gradoValue.textContent = `${ang}°`;
-                                coefValue.textContent = `${coeficiente} μS`;
-                                concValue.textContent = `${resultado.frm}N ${sym} ${resultado.fr}N`;
-                                eqValue.textContent = resultado.eq ? "Sí" : "No";
-    
-                                results.classList.add("show");
-                                location.hash = '';
-    
-                                drawGraph(graph, ang, coeficiente);
-    
-                                graphImg.setAttribute("src", graph.toDataURL());
-    
-                                const lastResult = results.querySelector(".row-div").lastElementChild.id;
-    
-                                setTimeout(() => location.hash = lastResult, 600);
-                            } else {
-                                document.querySelector(".container").remove(); // Eliminar contenedor
-                                document.body.style.backgroundImage = "url('img/splintermaster88.png')";
-                                document.body.style.backgroundSize = "cover";
-                                alert("Tengo 3 propiedades");
-                            }
-                        })
-                        .catch((error) => {
-                            console.error("Error al verificar el reCAPTCHA:", error);
-                            alert("Hubo un problema al verificar el reCAPTCHA.");
-                        });
+        grecaptcha.execute("6LdDoAkrAAAAAHhYbO_WRo_KXxb38G73KglnjONr", { action: "submit" })
+            .then((grecaptchaToken) => {
+                fetch("https://calculadorapombo.vercel.app/api/verify-recaptcha", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ token: grecaptchaToken }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.success) {
+                        const captchaResponse = grecaptcha.getResponse();
+                        if (!captchaResponse) {
+                            alert("Por favor completa el reCAPTCHA.");
+                            graphImg.setAttribute("src", "img/splintermaster88.png");
+                            return;
+                        }
+
+                        const formData = new FormData(form);
+                        const { masa = 0, angulo: ang = 0, m1 = 0, m2 = 0, coef = 0 } = Object.fromEntries(formData);
+
+                        const coeficiente = otroCheck.checked ? coef : coefRoz(m1, m2);
+                        const resultado = evaluar(masa, ang, coeficiente);
+                        const sym = resultado.frm >= resultado.fr ? "≥" : "≤";
+
+                        masaValue.textContent = `${resultado.kg} kg`;
+                        gradoValue.textContent = `${ang}°`;
+                        coefValue.textContent = `${coeficiente} μS`;
+                        concValue.textContent = `${resultado.frm}N ${sym} ${resultado.fr}N`;
+                        eqValue.textContent = resultado.eq ? "Sí" : "No";
+
+                        results.classList.add("show");
+                        location.hash = '';
+
+                        drawGraph(graph, ang, coeficiente);
+
+                        graphImg.setAttribute("src", graph.toDataURL());
+
+                        const lastResult = results.querySelector(".row-div").lastElementChild.id;
+
+                        setTimeout(() => location.hash = lastResult, 600);
+                    } else {
+                        document.querySelector(".container").remove(); // Eliminar contenedor
+                        document.body.style.backgroundImage = "url('img/splintermaster88.png')";
+                        document.body.style.backgroundSize = "cover";
+                        alert("Tengo 3 propiedades");
+                    }
                 })
                 .catch((error) => {
-                    console.error("Error al ejecutar reCAPTCHA:", error);
-                    alert("Hubo un problema al ejecutar el reCAPTCHA.");
+                    console.error("Error al verificar el reCAPTCHA:", error);
+                    alert("Hubo un problema al verificar el reCAPTCHA.");
                 });
+        })
+        .catch((error) => {
+            console.error("Error al ejecutar reCAPTCHA:", error);
+            alert("Hubo un problema al ejecutar el reCAPTCHA.");
         });
     });
 });
