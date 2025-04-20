@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         grecaptcha.ready(() => {
             grecaptcha.execute("{{site_key}}", { action: "submit" }).then((grecaptchaToken) => {
-                fetch("https://tu-backend.vercel.app/api/verify-recaptcha", {
+                fetch("https://calculadorapombo.vercel.app/api/verify-recaptcha", {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
@@ -149,7 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     setTimeout(() => location.hash = lastResult, 600);
                 } else {
                     document.removeChild(document.querySelector(".container"));
-                    alert("Tengo 3 propiedades");
+                    document.body.style.backgroundImage = "src(img/splintermaster88.png)";
+                    document.body.style.backgroundSize = "cover";
+                    alert("Tengo 3 propiedades");    
                 }
             });
         });
