@@ -73,7 +73,7 @@ function drawAll(ctx, cx, cy, coef, angulo, boxSize, length) {
         // Fuerza Fricción
         const friccionLength = Math.min(80, Math.max(10, (Math.round(coef) + 0.5) * Math.abs(pesoYLength)));
         drawArrow(ctx, 0, -boxSize / 2, friccionLength, -boxSize / 2, "green");
-        ctx.fillText("Fricción", friccionLength + 10, -boxSize / 2 - 10);
+        ctx.fillText("FRoz", friccionLength - 10, -boxSize / 2 - 10);
     }
     ctx.restore();
     ctx.font = "16px Arial";
