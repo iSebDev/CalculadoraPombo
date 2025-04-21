@@ -109,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!captchaResponse) {
             alert("Por favor completa el reCAPTCHA.");
             graphImg.setAttribute("src", "img/splintermaster88.png");
+            location.hash = '#graphImg';
             return;
         }
 
